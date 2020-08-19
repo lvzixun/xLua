@@ -40,6 +40,8 @@ endif()
 set(LUA_SRC_PATH lua-${LUA_VERSION}/src)
 set(LUAJIT_SRC_PATH luajit-2.1.0b3/src)
 
+include(${CMAKE_CURRENT_SOURCE_DIR}/../../../CMakeLists.txt)
+
 if (USING_LUAJIT)
 	
     if (APPLE AND NOT IOS AND NOT ANDROID)
@@ -91,26 +93,26 @@ else ()
 	#   ${LUA_SRC_PATH}/lutf8lib.c ${LUA_SRC_PATH}/loadlib.c )
 endif ()
 
-set ( LUA_SOCKET
-    luasocket/auxiliar.c
-    luasocket/buffer.c
-    luasocket/except.c
-    luasocket/inet.c
-    luasocket/io.c
-    luasocket/luasocket.c
-    luasocket/mime.c
-    luasocket/options.c
-    luasocket/select.c
-    luasocket/tcp.c
-    luasocket/timeout.c
-    luasocket/udp.c 
-)
+# set ( LUA_SOCKET
+#     luasocket/auxiliar.c
+#     luasocket/buffer.c
+#     luasocket/except.c
+#     luasocket/inet.c
+#     luasocket/io.c
+#     luasocket/luasocket.c
+#     luasocket/mime.c
+#     luasocket/options.c
+#     luasocket/select.c
+#     luasocket/tcp.c
+#     luasocket/timeout.c
+#     luasocket/udp.c 
+# )
 
-if ( WIN32 AND NOT CYGWIN )
-    list (APPEND LUA_SOCKET luasocket/wsocket.c)
-else ( )
-    list (APPEND LUA_SOCKET luasocket/usocket.c)
-endif ( )
+# if ( WIN32 AND NOT CYGWIN )
+#     list (APPEND LUA_SOCKET luasocket/wsocket.c)
+# else ( )
+#     list (APPEND LUA_SOCKET luasocket/usocket.c)
+# endif ( )
 
 set ( XLUA_CORE
     i64lib.c
